@@ -115,13 +115,13 @@
     <section class="lg:col-span-7 flex flex-col h-full bg-alpine-900/20">
       
       <!-- Stepper Controls Bar -->
-      <div class="p-4 border-b border-alpine-600 flex items-center justify-between bg-alpine-900/60">
-        <div class="flex items-center gap-2" id="gate-pills">
+      <div class="p-4 border-b border-alpine-600 flex flex-wrap items-center justify-between gap-3 bg-alpine-900/60">
+        <div class="flex flex-wrap items-center gap-2" id="gate-pills">
           <!-- Dynamically populated buttons -->
         </div>
         <div class="flex items-center gap-2">
-          <button id="prev-btn" class="px-3 py-1.5 bg-alpine-700 hover:bg-alpine-600 text-xs font-medium rounded transition">Prev</button>
-          <button id="next-btn" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium rounded transition">Next</button>
+          <button id="prev-btn" class="px-3 py-1.5 bg-alpine-700 hover:bg-alpine-600 text-xs font-medium rounded transition disabled:opacity-40 disabled:cursor-not-allowed">Prev</button>
+          <button id="next-btn" class="px-3 py-1.5 bg-blue-600 hover:bg-blue-500 text-white text-xs font-medium rounded transition disabled:opacity-40 disabled:cursor-not-allowed">Next</button>
         </div>
       </div>
 
@@ -231,6 +231,9 @@
         const g = document.createElementNS('http://www.w3.org/2000/svg', 'g');
         g.setAttribute('class', 'cursor-pointer');
         g.onclick = () => setGate(idx);
+        const tip = document.createElementNS('http://www.w3.org/2000/svg', 'title');
+        tip.textContent = gate.title;
+        g.appendChild(tip);
 
         const circle = document.createElementNS('http://www.w3.org/2000/svg', 'circle');
         circle.setAttribute('cx', gate.coordsSvg.cx);
